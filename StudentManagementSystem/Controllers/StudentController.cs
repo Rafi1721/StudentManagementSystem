@@ -19,8 +19,8 @@ namespace StudentManagementSystem.Controllers
             this._StudentOps = StudentOps;
             this.responseHelper = responseHelper;
         }
-        [HttpGet("")]
 
+        [HttpGet("")]
         public IActionResult GetStudent()
         {
             var response = _StudentOps.GetStudentOps();
@@ -48,8 +48,8 @@ namespace StudentManagementSystem.Controllers
             var response = _StudentOps.ByNameOps(Student_Name);
             return responseHelper.CreateResponse(response);
         }
-        [HttpPost("")]
 
+        [HttpPost("")]
         public IActionResult SaveStudent([FromBody] StudentModel studentmodel)
         {
             if (string.IsNullOrWhiteSpace(studentmodel.Student_Name))
@@ -59,6 +59,7 @@ namespace StudentManagementSystem.Controllers
             var response = _StudentOps.SaveStudentOps(studentmodel);
             return responseHelper.CreateResponse(response);
         }
+
         [HttpDelete("{Student_Id}")]
         public IActionResult Delete([FromRoute] int Student_Id)
         {
