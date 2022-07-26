@@ -9,8 +9,7 @@ namespace StudentManagementSystem.Operation
 
         private readonly IStudentRepo _studentRepo;
         private readonly ILogger<StudentOps> _logger;
-        public StudentOps(IStudentRepo studentRepo,
-                                    ILogger<StudentOps> logger)
+        public StudentOps(IStudentRepo studentRepo, ILogger<StudentOps> logger)
 
         {
             this._studentRepo = studentRepo;
