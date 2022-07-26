@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using StudentManagementSystem;
+using StudentManagementSystem.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -60,7 +60,7 @@ builder.Services.AddAuthentication(x =>
     };
 });
 
-builder.Services.AddSingleton<JwtAuthenticationManager>(new JwtAuthenticationManager(key));
+builder.Services.AddSingleton<JwtAuthentication>(new JwtAuthentication(key));
 
 
 

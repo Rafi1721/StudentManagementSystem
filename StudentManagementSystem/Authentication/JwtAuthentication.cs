@@ -3,16 +3,16 @@ using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 
-namespace StudentManagementSystem
+namespace StudentManagementSystem.Authentication
 {
-    public class JwtAuthenticationManager
+    public class JwtAuthentication
     {
         private readonly string key;
 
         private readonly IDictionary<string, string> users = new Dictionary<string, string>
         { {"rafi", "syed"}};
 
-        public JwtAuthenticationManager(string key)
+        public JwtAuthentication(string key)
         {
             this.key = key;
         }

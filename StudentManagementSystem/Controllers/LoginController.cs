@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using StudentManagementSystem.Model;
+using StudentManagementSystem.Authentication;
 
 namespace StudentManagementSystem.Controllers
 {
@@ -10,8 +11,8 @@ namespace StudentManagementSystem.Controllers
     [Route("api/[controller]/[action]")]
     public class LoginController : ControllerBase
     {
-        private readonly JwtAuthenticationManager jwtAuthenticationManager;
-        public LoginController(JwtAuthenticationManager jwtAuthenticationManager)
+        private readonly JwtAuthentication jwtAuthenticationManager;
+        public LoginController(JwtAuthentication jwtAuthenticationManager)
         {
             this.jwtAuthenticationManager = jwtAuthenticationManager;
         }
