@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using StudentManagementSystem.Helpers.Interface;
 using StudentManagementSystem.Model;
 using StudentManagementSystem.Operation.Interface;
+using Microsoft.AspNetCore.Authorization;
 
 namespace StudentManagementSystem.Controllers
 {
@@ -59,7 +60,7 @@ namespace StudentManagementSystem.Controllers
             var response = _StudentOps.SaveStudentOps(studentmodel);
             return responseHelper.CreateResponse(response);
         }
-
+        [Authorize]
         [HttpDelete("{Student_Id}")]
         public IActionResult Delete([FromRoute] int Student_Id)
         {
@@ -70,6 +71,5 @@ namespace StudentManagementSystem.Controllers
             var response = _StudentOps.DeleteStudentOps(Student_Id);
             return responseHelper.CreateResponse(response);
         }
-
     }
 }
