@@ -16,7 +16,6 @@ namespace StudentManagementSystem.Controllers
             this.jwtAuthenticationManager = jwtAuthenticationManager;
         }
 
-
         [HttpPost]
         [AllowAnonymous()]
         public IActionResult Authorize([FromBody] User usr)

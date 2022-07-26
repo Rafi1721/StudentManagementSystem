@@ -1,7 +1,4 @@
-﻿
-
-
-namespace StudentManagementSystem.Model
+﻿namespace StudentManagementSystem.Model
 {
     public class User
     {

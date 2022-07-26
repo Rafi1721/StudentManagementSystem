@@ -27,11 +27,11 @@ var builder = WebApplication.CreateBuilder(args);
     services.AddScoped<IStudentOps, StudentOps>();
     services.AddSingleton<IStudentRepo, StudentRepo>();
     services.AddScoped<IAPIResponseHelper, APIResponseHelper>();
-    
-   services.AddSwaggerGen(c =>
-    {
-        c.SwaggerDoc("v1", new OpenApiInfo { Title = "StudentManagementSystem", Version = "v1" });
-    });
+
+    services.AddSwaggerGen(c =>
+     {
+         c.SwaggerDoc("v1", new OpenApiInfo { Title = "StudentManagementSystem", Version = "v1" });
+     });
 
 }
 
@@ -60,7 +60,7 @@ builder.Services.AddAuthentication(x =>
     };
 });
 
-builder.Services.AddSingleton<JwtAuthenticationManager>( new JwtAuthenticationManager(key));
+builder.Services.AddSingleton<JwtAuthenticationManager>(new JwtAuthenticationManager(key));
 
 
 

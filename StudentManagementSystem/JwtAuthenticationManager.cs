@@ -5,8 +5,6 @@ using System.Security.Claims;
 
 namespace StudentManagementSystem
 {
-
-
     public class JwtAuthenticationManager
     {
         private readonly string key;
@@ -18,9 +16,6 @@ namespace StudentManagementSystem
         {
             this.key = key;
         }
-
-
-
         public string? Authenticate(string username, string password)
         {
 
