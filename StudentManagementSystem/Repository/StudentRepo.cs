@@ -76,7 +76,7 @@ namespace StudentManagementSystem.Repository
             }
         }
 
-        public StudentModel ByNameRepo(string StudentName)  
+        public StudentModel ByNameRepo(string StudentName)
         {
 
             try
@@ -119,7 +119,6 @@ namespace StudentManagementSystem.Repository
                 var Student_Id = Convert.ToInt32(cmd.ExecuteScalar());
 
                 con.Close();
-
                 return Student_Id;
             }
             catch (Exception e)

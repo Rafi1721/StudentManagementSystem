@@ -6,16 +6,16 @@ namespace StudentManagementSystem.Operation
 {
     public class StudentOps : IStudentOps
     {
-        
+
         private readonly IStudentRepo _studentRepo;
         private readonly ILogger<StudentOps> _logger;
         public StudentOps(IStudentRepo studentRepo,
                                     ILogger<StudentOps> logger)
-                             
+
         {
             this._studentRepo = studentRepo;
             this._logger = logger;
-            
+
         }
 
         public List<StudentModel> GetStudentOps()
@@ -26,10 +26,10 @@ namespace StudentManagementSystem.Operation
         {
             return _studentRepo.GetStudentByIdRepo(Student_Id);
         }
-          public StudentModel ByNameOps(String Student_Name)
-          {
-         return _studentRepo.ByNameRepo(Student_Name);
-         }
+        public StudentModel ByNameOps(String Student_Name)
+        {
+            return _studentRepo.ByNameRepo(Student_Name);
+        }
         public int SaveStudentOps(StudentModel studentmodel)
         {
             return _studentRepo.SaveStudentRepo(studentmodel);

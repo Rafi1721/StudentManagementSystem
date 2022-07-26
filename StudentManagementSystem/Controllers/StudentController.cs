@@ -30,7 +30,7 @@ namespace StudentManagementSystem.Controllers
         }
 
         [HttpGet("{Student_Id:int}")]
-        public IActionResult GetStudentById([FromRoute] int Student_Id) 
+        public IActionResult GetStudentById([FromRoute] int Student_Id)
         {
             if (Student_Id < 1)
             {
@@ -43,7 +43,7 @@ namespace StudentManagementSystem.Controllers
         [HttpGet("Student_Name")]
         public IActionResult ByName([FromQuery] string Student_Name)
         {
-            if(string.IsNullOrWhiteSpace(Student_Name))
+            if (string.IsNullOrWhiteSpace(Student_Name))
             {
                 return BadRequest();
             }
