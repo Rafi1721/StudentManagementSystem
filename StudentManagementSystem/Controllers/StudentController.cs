@@ -25,8 +25,6 @@ namespace StudentManagementSystem.Controllers
         {
             var response = _StudentOps.GetStudentOps();
             return responseHelper.CreateResponse(response);
-
-
         }
 
         [HttpGet("{Student_Id:int}")]
