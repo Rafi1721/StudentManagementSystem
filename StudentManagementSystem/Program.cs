@@ -1,4 +1,5 @@
 using Microsoft.OpenApi.Models;
+using Microsoft.EntityFrameworkCore;
 using StudentManagementSystem.Helpers;
 using StudentManagementSystem.Helpers.Interface;
 using StudentManagementSystem.Operation;
@@ -11,7 +12,10 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using StudentManagementSystem.Authentication;
 
+
 var builder = WebApplication.CreateBuilder(args);
+
+
 
 // Add services to the container.
 
@@ -27,6 +31,8 @@ var builder = WebApplication.CreateBuilder(args);
     services.AddScoped<IStudentOps, StudentOps>();
     services.AddSingleton<IStudentRepo, StudentRepo>();
     services.AddScoped<IAPIResponseHelper, APIResponseHelper>();
+    services.AddScoped<IUserOps, UserOps>();
+    services.AddSingleton<IUserRepo, UserRepo>();
 
     services.AddSwaggerGen(c =>
      {

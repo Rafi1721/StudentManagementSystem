@@ -21,6 +21,7 @@ namespace StudentManagementSystem.Controllers
             this.responseHelper = responseHelper;
         }
 
+        [Authorize]
         [HttpGet("")]
         public IActionResult GetStudent()
         {
@@ -28,6 +29,7 @@ namespace StudentManagementSystem.Controllers
             return responseHelper.CreateResponse(response);
         }
 
+        [Authorize]
         [HttpGet("{Student_Id:int}")]
         public IActionResult GetStudentById([FromRoute] int Student_Id)
         {
@@ -39,6 +41,7 @@ namespace StudentManagementSystem.Controllers
             return responseHelper.CreateResponse(response);
         }
 
+        [Authorize]
         [HttpGet("Student_Name")]
         public IActionResult ByName([FromQuery] string Student_Name)
         {
@@ -50,6 +53,7 @@ namespace StudentManagementSystem.Controllers
             return responseHelper.CreateResponse(response);
         }
 
+        [Authorize]
         [HttpPost("")]
         public IActionResult SaveStudent([FromBody] StudentModel studentmodel)
         {
@@ -60,6 +64,7 @@ namespace StudentManagementSystem.Controllers
             var response = _StudentOps.SaveStudentOps(studentmodel);
             return responseHelper.CreateResponse(response);
         }
+
         [Authorize]
         [HttpDelete("{Student_Id}")]
         public IActionResult Delete([FromRoute] int Student_Id)

@@ -9,9 +9,6 @@ namespace StudentManagementSystem.Authentication
     {
         private readonly string key;
 
-        private readonly IDictionary<string, string> users = new Dictionary<string, string>
-        { {"rafi", "syed"}};
-
         public JwtAuthentication(string key)
         {
             this.key = key;
@@ -19,10 +16,6 @@ namespace StudentManagementSystem.Authentication
         public string? Authenticate(string username, string password)
         {
 
-            if (!users.Any(u => u.Key == username && u.Value == password))
-            {
-                return null;
-            }
             JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
             var tokenKey = Encoding.ASCII.GetBytes(key);
             SecurityTokenDescriptor tokenDescriptor = new SecurityTokenDescriptor()

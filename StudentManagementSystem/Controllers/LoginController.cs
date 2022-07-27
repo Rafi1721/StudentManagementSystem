@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using StudentManagementSystem.Model;
 using StudentManagementSystem.Authentication;
+using StudentManagementSystem.Operation.Interface;
 
 namespace StudentManagementSystem.Controllers
 {
@@ -12,25 +13,35 @@ namespace StudentManagementSystem.Controllers
     public class LoginController : ControllerBase
     {
         private readonly JwtAuthentication jwtAuthenticationManager;
-        public LoginController(JwtAuthentication jwtAuthenticationManager)
+        private readonly IUserOps _userops;
+
+
+        public LoginController(JwtAuthentication jwtAuthenticationManager, IUserOps userops)
         {
             this.jwtAuthenticationManager = jwtAuthenticationManager;
+            this._userops = userops;
         }
 
         [HttpPost]
         [AllowAnonymous()]
         public IActionResult Authorize([FromBody] User usr)
         {
-            var token = jwtAuthenticationManager.Authenticate(usr.UserName, usr.Password);
-            if (string.IsNullOrEmpty(token))
-                return Unauthorized();
-            return Ok(token);
-        }
+            int res = _userops.LoginOps(usr.UserName, usr.Password);
+            if (res == 1)
+            {
+                var token = jwtAuthenticationManager.Authenticate(usr.UserName, usr.Password);
 
-        [HttpDelete]
-        public IActionResult TestRoute()
-        {
-            return Ok("Authorized");
+                if (string.IsNullOrEmpty(token))
+                {
+                    return Unauthorized();
+                }
+                else
+                {
+                    return Ok(token);
+                }
+            }
+            else
+                return null;
         }
     }
 }
