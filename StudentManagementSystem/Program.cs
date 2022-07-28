@@ -11,7 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using StudentManagementSystem.Authentication;
-
+using StudentManagementSystem.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -79,7 +79,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
+
 app.UseHttpsRedirection();
+
+app.UseMiddleware<ResponseTimeMiddleware>();
 
 app.UseAuthentication();
 
