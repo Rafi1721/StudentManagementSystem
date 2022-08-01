@@ -4,22 +4,26 @@ using Microsoft.AspNetCore.Authorization;
 using StudentManagementSystem.Model;
 using StudentManagementSystem.Authentication;
 using StudentManagementSystem.Operation.Interface;
+using StudentManagementSystem.Helpers.Interface;
 
 namespace StudentManagementSystem.Controllers
 {
-    [Authorize]
+
     [ApiController]
     [Route("api/[controller]/[action]")]
     public class LoginController : ControllerBase
     {
         private readonly JwtAuthentication jwtAuthenticationManager;
         private readonly IUserOps _userops;
+        private readonly IAPIResponseHelper responseHelper;
 
 
-        public LoginController(JwtAuthentication jwtAuthenticationManager, IUserOps userops)
+        public LoginController(JwtAuthentication jwtAuthenticationManager, IUserOps userops, IAPIResponseHelper responseHelper)
         {
             this.jwtAuthenticationManager = jwtAuthenticationManager;
             this._userops = userops;
+            this.responseHelper = responseHelper;
+
         }
 
         [HttpPost]
@@ -42,6 +46,13 @@ namespace StudentManagementSystem.Controllers
             }
             else
                 return null;
+        }
+
+        [HttpPost("")]
+        public IActionResult Register([FromBody] User usr)
+        {
+            var response = _userops.RegisterOps(usr.UserName, usr.Password);
+            return responseHelper.CreateResponse(response);
         }
     }
 }

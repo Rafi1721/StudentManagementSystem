@@ -1,4 +1,5 @@
-﻿using StudentManagementSystem.Operation.Interface;
+﻿using StudentManagementSystem.Model;
+using StudentManagementSystem.Operation.Interface;
 using StudentManagementSystem.Repository.Interface;
 
 namespace StudentManagementSystem.Operation
@@ -16,6 +17,10 @@ namespace StudentManagementSystem.Operation
         public int LoginOps(string _username, string _password)
         {
             return _UserRepo.Loginrepo(_username, _password);
+        }
+        public int RegisterOps(string _username, string _password)
+        {
+            return _UserRepo.Registerrepo(_username, _password);
         }
     }
 }

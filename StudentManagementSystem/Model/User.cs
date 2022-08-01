@@ -7,7 +7,7 @@ namespace StudentManagementSystem.Model
         public string UserName { get; set; } = string.Empty;
 
         [Required]
-        [RegularExpression("^(?=.*_[A-Za-z])(?=.*_)[A-Za-z]{8,15}$")]
+        [RegularExpression("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")]
         public string Password { get; set; } = string.Empty;
     }
 }
