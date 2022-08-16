@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace StudentManagementSystem.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("Student")]
     [ApiController]
     public class StudentController : ControllerBase
     {
